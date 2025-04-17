@@ -1422,6 +1422,21 @@ register_template(
 )
 
 
+# Adapted from intern2 template
+register_template(
+    name="internvl2_5",
+    format_user=StringFormatter(
+        slots=["<|im_start|>user\n{{content}}<|im_end|>\n<|im_start|>assistant\n"]
+    ),
+    format_assistant=StringFormatter(slots=["{{content}}<|im_end|>\n"]),
+    format_system=StringFormatter(
+        slots=["<|im_start|>system\n{{content}}<|im_end|>\n"]
+    ),
+    default_system="You are a helpful assistant.",
+    stop_words=["<|im_end|>"],
+)
+
+
 register_template(
     name="sailor",
     format_user=StringFormatter(slots=["<|im_start|>question\n{{content}}<|im_end|>\n<|im_start|>answer\n"]),
